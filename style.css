@@ -1,0 +1,117 @@
+html {
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #C4C4C4;
+    margin: 0;
+}
+
+.form-api {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 62px;
+}
+
+.input-api {
+    width: 80%;
+    height: 61px;
+    padding: 5px 0 5px 30px;
+    margin: 0;
+    border-radius: 50px;
+    border: 3px solid #9a9a9a;
+    box-sizing: border-box;
+    font-size: 42px;
+    line-height: 40px;
+}
+
+.input-api::placeholder {
+    font-size: 46px;
+    line-height: 47px;
+}
+
+.input-api::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    cursor: pointer;
+
+    height: 35px;
+    width: 35px;
+    margin-right: 20px;
+    background-image: url(./icons/close.svg);
+    background-size: 35px 35px;
+}
+
+.autocomplete-list {
+    width: 80%;
+}
+
+.autocomplete-item {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    height: 44px;
+    border-radius: 50px;
+    margin-top: 10px;
+    padding-left: 30px;
+    background-color: #E3E3E3;
+    color: #686868;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 35px;
+    line-height: 36px; ;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.autocomplete-item:hover {
+    background-color: #65CDF9;
+    border: 1px solid grey;
+}
+
+.repos {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 80%;
+    margin-top: auto;
+    margin-bottom: 62px;
+}
+
+.repo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    padding: 8px 30px;
+    border-radius: 30px;
+    background-color: #dda0dd;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 22px;
+    line-height: 25px;
+    box-sizing: border-box;
+}
+
+.remove-button {
+    height: 50px;
+    width: 50px;
+    padding: 0;
+    border: none;
+    border-radius: 50px;
+    background-color: #dda0dd;
+    background-image: url(./icons/close.svg);
+    background-size: 50px 50px;
+    background-position: 50% 50%;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.remove-button:hover {
+    background-size: 60px 60px;
+}
