@@ -13,7 +13,7 @@ function debounce(func, delay) {
 
 async function searchRepos(query) {
     if (!query) {
-        autocompleteList.innerHTML = '';
+        autocompleteList.textContent = '';
         return;
     }
 
@@ -24,12 +24,12 @@ async function searchRepos(query) {
     } catch (error) {
         console.error(error);
         errorMessage.textContent = error.message; 
-        autocompleteList.innerHTML = ''; 
+        autocompleteList.textContent = ''; 
     }
 }
 
 function displayAutocompleteList(items) {
-    autocompleteList.innerHTML = '';
+    autocompleteList.textContent = '';
     items.forEach(item => {
         const li = document.createElement('li');
         li.classList.add('autocomplete-item');
@@ -43,23 +43,47 @@ function addRepos(repo) {
     repos.push(repo);
     displayRepoList();
     input.value = '';
-    autocompleteList.innerHTML = '';
+    autocompleteList.textContent = '';
 }
 
 function displayRepoList() {
-    reposList.innerHTML = '';
+    reposList.textContent = '';
+
+    // repos.forEach((repo, i) => {
+    //     const item = document.createElement('div');
+    //     item.classList.add('repo-item');
+    //     item.innerHTML = `
+    //     <span>
+    //     Name: ${repo.name} <br>
+    //     Owner: ${repo.owner.login} <br>
+    //     Stars: ${repo.stargazers_count}
+    //     </span>
+    //     <button class="remove-button" onclick="deleteRepo(${i})"></button>
+    // `;
+    // reposList.appendChild(item);
+    // });
 
     repos.forEach((repo, i) => {
         const item = document.createElement('div');
         item.classList.add('repo-item');
-        item.innerHTML = `
-        <span>
-        Name: ${repo.name} <br>
-        Owner: ${repo.owner.login} <br>
+
+        const span = document.createElement('span');
+        span.classList.add('item-info');
+        span.textContent = `
+        Name: ${repo.name}
+        Owner: ${repo.owner.login}
         Stars: ${repo.stargazers_count}
-        </span>
-        <button class="remove-button" onclick="deleteRepo(${i})"></button>
-    `;
+        `;
+
+        const removeButton = document.createElement('button');
+        removeButton.classList.add('remove-button');
+        removeButton.onclick = () => {
+            deleteRepo(i);
+        };
+
+        item.appendChild(span);
+        item.appendChild(removeButton);
+    ;
     reposList.appendChild(item);
     });
 }
@@ -71,4 +95,4 @@ function deleteRepo (i) {
 
 input.addEventListener('input', debounce((e) => {
     searchRepos(e.target.value);
-}, 200));
+}, 600));
